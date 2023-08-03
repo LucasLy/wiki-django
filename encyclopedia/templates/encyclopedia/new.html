@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %} 
+  Encyclopedia - Create New Page #
+{% endblock %}
+
+{% block body %}
+  <h1>New Page</h1>
+
+  <form action="{% url 'new' %}" method="POST">
+    {% csrf_token %}
+    <!--Title-->
+    <label for="title">Page Title</label><br />
+    <input type="text" name="title" placeholder="Page title" />
+
+    <br />
+    <br />
+
+    <!--Content-->
+    <label for="content">Page Content &#40;Markdown&#41;</label><br />
+    <a href="https://www.markdownguide.org/cheat-sheet/">Markdown Cheatsheet</a><br /><br />
+    <textarea name="content"># Page Heading</textarea>
+
+    <br />
+    <br />
+    <input type="submit" value="Create new Page!" class="btn btn-success" />
+  </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %} 
+
+{% block title %} 
+Encyclopedia - CreateNew Page 
+{% endblock %} 
+
+{% block body %}
+  <h1>No results for "{{query}}"</h1>
+
+  {% if entries|length > 1 %}
+  <h3>Did you mean one of these?</h3>
+  {% else %}
+  <h3>There were not results found for your query.</h3>
+  {% endif %}
+
+  <ul>
+    {% for entry in entries %}
+    <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
